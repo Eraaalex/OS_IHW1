@@ -1,0 +1,2 @@
+Letter numbers = 2
+Number numbers = 9

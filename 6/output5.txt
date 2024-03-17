@@ -1,0 +1,2 @@
+Letter numbers = 5000
+Number numbers = 0
