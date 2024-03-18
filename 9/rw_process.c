@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
     const char *output_file = argv[2];
     const char *fifo1 = "fifo1";
     const char *fifo2 = "fifo2";
-    
+
     int input_fd = open(input_file, O_RDONLY);
     if (input_fd == -1) {
         printf("Can\'t open input file\n");
