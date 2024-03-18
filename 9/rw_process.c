@@ -6,7 +6,7 @@
 
 #define buf_size 128
 
-void read(int input_fd, int fd) {
+void read_file(int input_fd, int fd) {
     char str_buf[buf_size];
     ssize_t read_bytes;
     while ((read_bytes = read(input_fd, str_buf, buf_size)) > 0) {
@@ -21,7 +21,7 @@ void read(int input_fd, int fd) {
     }
 }
 
-void write(int fd, int output_fd) {
+void write_file(int fd, int output_fd) {
     char str_buf[buf_size];
     ssize_t read_bytes;
     while ((read_bytes = read(fd, str_buf, buf_size)) > 0) {
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
         printf("Can\'t open my FIFO = %s for reading\n", fifo1);
         exit(-1);
     }
-    read(input_fd, fifo_fd);
+    read_file(input_fd, fifo_fd);
     int output_fd = open(output_file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (output_fd == -1) {
         printf("Can\'t open output file\n");
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
         printf("Can\'t open my FIFO = %s for writing\n", fifo2);
         exit(-1);
     }
-    write(fifo_fd, output_fd);
+    write_file(fifo_fd, output_fd);
     unlink(fifo1);
     unlink(fifo2);
 

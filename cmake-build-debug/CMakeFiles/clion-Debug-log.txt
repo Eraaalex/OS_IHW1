@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\Eraaa\OneDrive\Рабочий стол\IHW1 Select CMakeLists.txt

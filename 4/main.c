@@ -23,7 +23,7 @@ void process_1(const char *input_file, int pipe_1[]) {
     close(pipe_1[0]);
     int fd = open(input_file, O_RDONLY);
     if (fd == -1) {
-        printf("Error opening input file\n");
+        printf("Can\'t open input file\n");
         exit(-1);
     }
     char str_buf[size];
@@ -71,7 +71,7 @@ void process_3(const char *output_file, int pipe_1[], int pipe_2[]) {
     close(pipe_2[1]);
     int output_fd = open(output_file, O_WRONLY | O_CREAT | O_TRUNC, 0666);
     if (output_fd == -1) {
-        printf("Error opening output file\n");
+        printf("Can\'t open output file\n");
         exit(-1);
     }
     char str_buf[size];
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
     // Создание процесса 2
     pid = fork();
     if (pid == -1) {
-        printf("Can't create process 2\n");
+        printf("Can\'t create process 2\n");
         exit(-1);
     } else if (pid == 0) {
         process_2(pipe_1, pipe_2);
@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
     // Создание процесса 3
     pid = fork();
     if (pid == -1) {
-        printf("Can't create  process 3\n");
+        printf("Can\'t create  process 3\n");
         exit(-1);
     } else if (pid == 0) {
         process_3(output_file, pipe_1, pipe_2);
@@ -138,7 +138,6 @@ int main(int argc, char *argv[]) {
     close(pipe_2[1]);
     // Ожидание завершения всех дочерних процессов
     while (wait(NULL) != -1);
-
     return 0;
 }
 
